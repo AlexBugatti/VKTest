@@ -19,6 +19,9 @@
 		FA74255E1BE3A81600770E25 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74255D1BE3A81600770E25 /* NetworkManager.m */; settings = {ASSET_TAGS = (); }; };
 		FA7425631BE3A82600770E25 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425601BE3A82600770E25 /* User+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		FA7425641BE3A82600770E25 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425621BE3A82600770E25 /* User.m */; settings = {ASSET_TAGS = (); }; };
+		FA7425691BE3B15800770E25 /* AuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425671BE3B15800770E25 /* AuthorizeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		FA74256A1BE3B15800770E25 /* AuthorizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7425681BE3B15800770E25 /* AuthorizeViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		FA74256D1BE3CDB900770E25 /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74256C1BE3CDB900770E25 /* AccessToken.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,11 @@
 		FA7425601BE3A82600770E25 /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
 		FA7425611BE3A82600770E25 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		FA7425621BE3A82600770E25 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		FA7425661BE3B15800770E25 /* AuthorizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizeViewController.h; sourceTree = "<group>"; };
+		FA7425671BE3B15800770E25 /* AuthorizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizeViewController.m; sourceTree = "<group>"; };
+		FA7425681BE3B15800770E25 /* AuthorizeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthorizeViewController.xib; sourceTree = "<group>"; };
+		FA74256B1BE3CDB900770E25 /* AccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessToken.h; sourceTree = "<group>"; };
+		FA74256C1BE3CDB900770E25 /* AccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessToken.m; sourceTree = "<group>"; };
 		FD8CB0A6BC839AA1F9820E27 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +140,7 @@
 		FA74254D1BE39CD300770E25 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA7425651BE3B08300770E25 /* AuthorizeViewController */,
 				FA74254F1BE39D1500770E25 /* LoginViewController */,
 			);
 			path = Controllers;
@@ -144,6 +153,8 @@
 				FA7425601BE3A82600770E25 /* User+CoreDataProperties.m */,
 				FA7425611BE3A82600770E25 /* User.h */,
 				FA7425621BE3A82600770E25 /* User.m */,
+				FA74256B1BE3CDB900770E25 /* AccessToken.h */,
+				FA74256C1BE3CDB900770E25 /* AccessToken.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +175,16 @@
 				FA74255D1BE3A81600770E25 /* NetworkManager.m */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		FA7425651BE3B08300770E25 /* AuthorizeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA7425661BE3B15800770E25 /* AuthorizeViewController.h */,
+				FA7425671BE3B15800770E25 /* AuthorizeViewController.m */,
+				FA7425681BE3B15800770E25 /* AuthorizeViewController.xib */,
+			);
+			name = AuthorizeViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +249,7 @@
 			files = (
 				FA6AD0681BE36CD500D47A2D /* LaunchScreen.storyboard in Resources */,
 				FA6AD0651BE36CD500D47A2D /* Assets.xcassets in Resources */,
+				FA74256A1BE3B15800770E25 /* AuthorizeViewController.xib in Resources */,
 				FA6AD0601BE36CD500D47A2D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,9 +312,11 @@
 				FA7425641BE3A82600770E25 /* User.m in Sources */,
 				FA7425631BE3A82600770E25 /* User+CoreDataProperties.m in Sources */,
 				FA6AD0631BE36CD500D47A2D /* VKTest.xcdatamodeld in Sources */,
+				FA7425691BE3B15800770E25 /* AuthorizeViewController.m in Sources */,
 				FA6AD05D1BE36CD500D47A2D /* ViewController.m in Sources */,
 				FA6AD05A1BE36CD500D47A2D /* AppDelegate.m in Sources */,
 				FA6AD0571BE36CD500D47A2D /* main.m in Sources */,
+				FA74256D1BE3CDB900770E25 /* AccessToken.m in Sources */,
 				FA74255E1BE3A81600770E25 /* NetworkManager.m in Sources */,
 				FA7425521BE39D8B00770E25 /* LoginViewController.m in Sources */,
 			);

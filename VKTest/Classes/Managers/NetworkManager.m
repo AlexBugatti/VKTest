@@ -49,6 +49,9 @@ static NSString * kRedirectURI = @"https://vk.com";
 
 - (void)autorizationUser:(void(^)(User *user))completion {
 
+    NSURL *urlString = [NSURL URLWithString:@"https://oauth.vk.com/authorize?client_id=%d&redirect_id=%@&display=mobile&scope=friends&response_type=token"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:urlString];
+    
 }
 
 @end

@@ -7,8 +7,12 @@
 //
 
 #import "LoginViewController.h"
+#import "AuthorizeViewController.h"
 
 @interface LoginViewController ()
+
+@property (strong, nonatomic) IBOutlet UIButton *authButton;
+@property (strong, nonatomic) AccessToken *accessToken;
 
 @end
 
@@ -16,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.authButton.layer.cornerRadius = 5;
     // Do any additional setup after loading the view.
 }
 
@@ -23,6 +29,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+#pragma mark - Actions
+
+- (IBAction)authButtonTapped:(id)sender {
+    AuthorizeViewController *authcontroller = [[AuthorizeViewController alloc] initWithNibName:@"AuthorizeViewController" bundle:nil onComplete:^(AccessToken *token) {
+        self.accessToken = token;
+    }];
+
+    UINavigationController *navigationController =
+    [[UINavigationController alloc] initWithRootViewController:authcontroller];
+    [self presentViewController:navigationController animated:YES completion:nil];
+    
+}
+
 
 /*
 #pragma mark - Navigation
