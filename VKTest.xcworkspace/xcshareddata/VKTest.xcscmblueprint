@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9EDF74F9EFBF45BA264B50108D0E3B0AEE115933",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9EDF74F9EFBF45BA264B50108D0E3B0AEE115933" : 0,
+    "970C90478F4DDB923D07AC95C7FD5FA6062C16D0" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "18C54467-A1BF-494A-A36C-C4A4CE2EBB9A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9EDF74F9EFBF45BA264B50108D0E3B0AEE115933" : "VKTest\/",
+    "970C90478F4DDB923D07AC95C7FD5FA6062C16D0" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "VKTest",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VKTest.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git.rosberry.com:q-less\/q-less-customer-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "970C90478F4DDB923D07AC95C7FD5FA6062C16D0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/AlexBugatti\/VKTest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9EDF74F9EFBF45BA264B50108D0E3B0AEE115933"
+    }
+  ]
+}
