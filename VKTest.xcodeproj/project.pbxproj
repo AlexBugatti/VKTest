@@ -15,6 +15,10 @@
 		FA6AD0631BE36CD500D47A2D /* VKTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA6AD0611BE36CD500D47A2D /* VKTest.xcdatamodeld */; };
 		FA6AD0651BE36CD500D47A2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6AD0641BE36CD500D47A2D /* Assets.xcassets */; };
 		FA6AD0681BE36CD500D47A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6AD0661BE36CD500D47A2D /* LaunchScreen.storyboard */; };
+		FA7425521BE39D8B00770E25 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425511BE39D8B00770E25 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
+		FA74255E1BE3A81600770E25 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74255D1BE3A81600770E25 /* NetworkManager.m */; settings = {ASSET_TAGS = (); }; };
+		FA7425631BE3A82600770E25 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425601BE3A82600770E25 /* User+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		FA7425641BE3A82600770E25 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425621BE3A82600770E25 /* User.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,14 @@
 		FA6AD0641BE36CD500D47A2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA6AD0671BE36CD500D47A2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA6AD0691BE36CD500D47A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA7425501BE39D8B00770E25 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		FA7425511BE39D8B00770E25 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		FA74255C1BE3A81600770E25 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		FA74255D1BE3A81600770E25 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		FA74255F1BE3A82600770E25 /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		FA7425601BE3A82600770E25 /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
+		FA7425611BE3A82600770E25 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		FA7425621BE3A82600770E25 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		FD8CB0A6BC839AA1F9820E27 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +96,7 @@
 		FA6AD0541BE36CD500D47A2D /* VKTest */ = {
 			isa = PBXGroup;
 			children = (
+				FA74254C1BE39CD300770E25 /* Classes */,
 				FA6AD0581BE36CD500D47A2D /* AppDelegate.h */,
 				FA6AD0591BE36CD500D47A2D /* AppDelegate.m */,
 				FA6AD05B1BE36CD500D47A2D /* ViewController.h */,
@@ -104,6 +117,53 @@
 				FA6AD0561BE36CD500D47A2D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA74254C1BE39CD300770E25 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FA74254D1BE39CD300770E25 /* Controllers */,
+				FA74255B1BE3A81600770E25 /* Managers */,
+				FA74254E1BE39CD300770E25 /* Models */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		FA74254D1BE39CD300770E25 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA74254F1BE39D1500770E25 /* LoginViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FA74254E1BE39CD300770E25 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA74255F1BE3A82600770E25 /* User+CoreDataProperties.h */,
+				FA7425601BE3A82600770E25 /* User+CoreDataProperties.m */,
+				FA7425611BE3A82600770E25 /* User.h */,
+				FA7425621BE3A82600770E25 /* User.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FA74254F1BE39D1500770E25 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA7425501BE39D8B00770E25 /* LoginViewController.h */,
+				FA7425511BE39D8B00770E25 /* LoginViewController.m */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		FA74255B1BE3A81600770E25 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FA74255C1BE3A81600770E25 /* NetworkManager.h */,
+				FA74255D1BE3A81600770E25 /* NetworkManager.m */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,10 +287,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7425641BE3A82600770E25 /* User.m in Sources */,
+				FA7425631BE3A82600770E25 /* User+CoreDataProperties.m in Sources */,
 				FA6AD0631BE36CD500D47A2D /* VKTest.xcdatamodeld in Sources */,
 				FA6AD05D1BE36CD500D47A2D /* ViewController.m in Sources */,
 				FA6AD05A1BE36CD500D47A2D /* AppDelegate.m in Sources */,
 				FA6AD0571BE36CD500D47A2D /* main.m in Sources */,
+				FA74255E1BE3A81600770E25 /* NetworkManager.m in Sources */,
+				FA7425521BE39D8B00770E25 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
