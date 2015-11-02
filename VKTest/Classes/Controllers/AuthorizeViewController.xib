@@ -29,6 +29,7 @@
                 <constraint firstAttribute="bottom" secondItem="8WZ-bG-O1e" secondAttribute="bottom" id="pKt-CO-50y"/>
                 <constraint firstItem="8WZ-bG-O1e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ufI-mK-8OW"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="280" y="323"/>
         </view>
     </objects>

@@ -8,6 +8,10 @@
 
 #import "LoginViewController.h"
 #import "AuthorizeViewController.h"
+#import "NetworkManager.h"
+
+static NSString * kLoginToNewsSegueIdentifier = @"LoginToNewsSegue";
+static NSString * kAuthorizeUser = @"AuthorizeUser";
 
 @interface LoginViewController ()
 
@@ -22,6 +26,8 @@
     [super viewDidLoad];
     
     self.authButton.layer.cornerRadius = 5;
+    
+    [self goToNews];
     // Do any additional setup after loading the view.
 }
 
@@ -35,11 +41,19 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self goToNews];
+}
+
 #pragma mark - Actions
 
 - (IBAction)authButtonTapped:(id)sender {
     AuthorizeViewController *authcontroller = [[AuthorizeViewController alloc] initWithNibName:@"AuthorizeViewController" bundle:nil onComplete:^(AccessToken *token) {
-        self.accessToken = token;
+        [[NSUserDefaults standardUserDefaults] setObject:[token dictionary] forKey:kAuthorizeUser];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [NetworkManager sharedInstance].token = token;
+        [self goToNews];
     }];
 
     UINavigationController *navigationController =
@@ -48,6 +62,12 @@
     
 }
 
+- (void)goToNews {
+    NSDictionary *token = [[NSUserDefaults standardUserDefaults] objectForKey:kAuthorizeUser];
+    if (token) {
+        [self performSegueWithIdentifier:kLoginToNewsSegueIdentifier sender:nil];
+    }
+}
 
 /*
 #pragma mark - Navigation

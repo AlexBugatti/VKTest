@@ -15,6 +15,7 @@ static NSString * kVkAuthorizationURL = @"https://oauth.vk.com/authorize";
 
 static NSInteger kClientID = 5127395;
 static NSString * kRedirectURI = @"https://vk.com";
+static NSString * kCurrentApiVersion = @"5.37";
 
 @interface NetworkManager ()
 
@@ -28,6 +29,9 @@ static NSString * kRedirectURI = @"https://vk.com";
 {
     self = [super init];
     if (self) {
+        NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"AuthorizeUser"];
+        if (dict) self.token = [[AccessToken alloc] initWithDictionary:dict];
+
         self.requestManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kVkApiURL]];
     }
     return self;
@@ -47,11 +51,44 @@ static NSString * kRedirectURI = @"https://vk.com";
 
 #pragma mark - get methods
 
-- (void)autorizationUser:(void(^)(User *user))completion {
-
-    NSURL *urlString = [NSURL URLWithString:@"https://oauth.vk.com/authorize?client_id=%d&redirect_id=%@&display=mobile&scope=friends&response_type=token"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:urlString];
+- (void)getNews:(void(^)(NSArray * news))completion offset:(NSInteger)offset onError:(void(^)(NSError *error))failure {
     
+    NSDictionary *parameters = @{@"filters":        @"post",
+                                 @"count":          @"15",
+                                 @"v":              kCurrentApiVersion,
+                                 @"offset":         @(offset),
+                                 @"access_token":   self.token.token};
+    
+    [self.requestManager GET:@"wall.get" parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        //
+        if ([responseObject objectForKey:@"response"]) {
+            if (completion) {
+                completion([[responseObject objectForKey:@"response"] objectForKey:@"items"]);
+            }
+        }
+        
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        //
+    }];
+}
+
+- (void)getUsers:(void(^)(NSArray *user))completion uids:(NSString *)uids onError:(void(^)(NSError *error))failure {
+    
+    NSDictionary *parameters = @{@"user_ids":      uids,
+                                 @"fields":         @"photo_200",
+                                 @"v":              kCurrentApiVersion};
+    
+    [self.requestManager GET:@"users.get" parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        //
+        if ([responseObject objectForKey:@"response"]) {
+            if (completion) {
+                completion([responseObject objectForKey:@"response"]);
+            }
+        }
+        
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        //
+    }];
 }
 
 @end

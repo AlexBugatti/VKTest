@@ -28,8 +28,10 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Вход";
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
+    self.navigationItem.rightBarButtonItem = cancelButton;
     
-    NSString *urlString = [NSString stringWithFormat:@"https://oauth.vk.com/authorize?""client_id=5127395&""redirect_uri=https://success&""display=mobile&""scope=friends&""response_type=token&v=5.37&revoke=1"];
+    NSString *urlString = [NSString stringWithFormat:@"https://oauth.vk.com/authorize?""client_id=5127395&""redirect_uri=https://success&""display=mobile&""scope=wall&""response_type=token&v=5.37&revoke=1"];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -42,6 +44,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Actions
+
+- (void)cancelButtonTapped:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIWebView Delegate
@@ -58,12 +66,13 @@
             accessToken.token = [elementArray[0] componentsSeparatedByString:@"="].lastObject;
             accessToken.expireTime = [elementArray[1] componentsSeparatedByString:@"="].lastObject;
             accessToken.userID = [elementArray[2] componentsSeparatedByString:@"="].lastObject;
-            if (self.myBlock) {
-                self.myBlock(accessToken);
-            }
+            [self dismissViewControllerAnimated:YES completion:^{
+                if (self.myBlock) {
+                    self.myBlock(accessToken);
+                }
+            }];
         }
         
-
     }
     
     return YES;

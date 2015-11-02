@@ -14,4 +14,7 @@
 @property (nonatomic, strong) NSString * expireTime;
 @property (nonatomic, assign) NSString * userID;
 
+- (NSDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @end
