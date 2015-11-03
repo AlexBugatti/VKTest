@@ -24,6 +24,11 @@
 #import "Constants.h"
 
 static const CGFloat kMaxPostHeight = 100;
+static const CGFloat kHeaderHeight = 55;
+static const CGFloat kFooterHeight = 40;
+static const CGFloat kBorderSpacing = 16;
+
+
 static NSString * kNewsToDetailSegueIdentifier = @"NewsToDetailSegue";
 
 @interface NewsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
@@ -81,7 +86,7 @@ static NSString * kNewsToDetailSegueIdentifier = @"NewsToDetailSegue";
             [self.news addObject:note];
         }];
         
-        dispatch_queue_t q = dispatch_queue_create("com.foo.samplequeue", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_queue_t q = dispatch_queue_create("com.foo.queue", DISPATCH_QUEUE_CONCURRENT);
         dispatch_async(q, ^{
             [[NetworkManager sharedInstance] getUsers:^(NSArray *users) {
                 [users enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -177,11 +182,11 @@ static NSString * kNewsToDetailSegueIdentifier = @"NewsToDetailSegue";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(self.collectionView.frame.size.width, 55);
+    return CGSizeMake(self.collectionView.frame.size.width, kHeaderHeight);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-    return CGSizeMake(self.collectionView.frame.size.width, 40);
+    return CGSizeMake(self.collectionView.frame.size.width, kFooterHeight);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -199,11 +204,11 @@ static NSString * kNewsToDetailSegueIdentifier = @"NewsToDetailSegue";
     }
     
     CGRect labelRect = [note.text
-                        boundingRectWithSize:CGSizeMake(self.collectionView.frame.size.width - 16, kMaxPostHeight)
+                        boundingRectWithSize:CGSizeMake(self.collectionView.frame.size.width - kBorderSpacing, kMaxPostHeight)
                         options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
                         attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]}
                         context:nil];
-    return CGSizeMake(self.collectionView.frame.size.width, labelRect.size.height + 16);
+    return CGSizeMake(self.collectionView.frame.size.width, labelRect.size.height + kBorderSpacing);
 }
 
 #pragma mark - Actions 
