@@ -33,7 +33,9 @@
     
     NSString *urlString = [NSString stringWithFormat:@"https://oauth.vk.com/authorize?""client_id=5127395&""redirect_uri=https://success&""display=mobile&""scope=wall&""response_type=token&v=5.37&revoke=1"];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [self.webView loadRequest:request];
     
     self.webView.delegate = self;
     [self.webView loadRequest:request];
@@ -60,6 +62,13 @@
         NSString *absoluteString = [[request URL] absoluteString];
         NSArray *tokenArray = [absoluteString componentsSeparatedByString:@"#"];
         NSArray *elementArray = [tokenArray.lastObject componentsSeparatedByString:@"&"];
+        if ([tokenArray firstObject]) {
+            NSArray *firstElement = [tokenArray.lastObject componentsSeparatedByString:@"="];
+            NSString *tokenIdentifier = firstElement.firstObject;
+            if (![tokenIdentifier isEqualToString:@"access_token"]) {
+                return NO;
+            }
+        }
         AccessToken * accessToken = [[AccessToken alloc] init];
 
         if (elementArray.count > 2) {

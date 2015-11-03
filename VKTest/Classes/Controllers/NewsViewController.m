@@ -16,19 +16,16 @@
 #import "NewsImageCollectionViewCell.h"
 #import <UIImageView+AFNetworking.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <AFNetworking.h>
+#import "DetailViewController.h"
 #import "News.h"
 #import "Note.h"
 #import "Users.h"
 #import "Photo.h"
+#import "Constants.h"
 
-static NSString * kNewsTableViewCellIdentifier = @"NewsTableViewCell";
-static NSString * kNewsFooterViewIdentifier = @"NewsFooterCollectionReusableView";
-static NSString * kNewsHeaderViewIdentifier = @"NewsHeaderCollectionReusableView";
-static NSString * kNewsTextCollectionViewIdentifier = @"NewsTextCollectionViewCell";
-static NSString * kNewsImageCollectionViewIdentifier = @"NewsImageCollectionViewCell";
-
-
-static const CGFloat kMaxPostHeight = 200;
+static const CGFloat kMaxPostHeight = 100;
+static NSString * kNewsToDetailSegueIdentifier = @"NewsToDetailSegue";
 
 @interface NewsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -46,6 +43,7 @@ static const CGFloat kMaxPostHeight = 200;
     self.navigationItem.hidesBackButton = YES;
     UIBarButtonItem * exitButton = [[UIBarButtonItem alloc] initWithTitle:@"Выход" style:UIBarButtonItemStylePlain target:self action:@selector(exitButtonTapped:)];
     self.navigationItem.rightBarButtonItem = exitButton;
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     // Do any additional setup after loading the view.
     
     self.collectionView.delegate = self;
@@ -57,20 +55,29 @@ static const CGFloat kMaxPostHeight = 200;
 
     
     self.news = [[NSMutableArray alloc] init];
-    UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
-    [self.collectionView addSubview:refreshControl];
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.refreshControl addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
+//    [self.collectionView addSubview:self.refreshControl];
     
     __weak typeof(self) weakSelf = self;
     [self.collectionView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf loadNews];
+    }];
+    
+    [self.collectionView addPullToRefreshWithActionHandler:^{
+        [weakSelf.news removeAllObjects];
         [weakSelf loadNews];
     }];
 
     [self loadNews];
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [self.collectionView reloadData];
+}
+
 - (void)loadNews {
-    __weak typeof(self) weakSelf = self;
     NSMutableString *uids = [NSMutableString string];
     [[NetworkManager sharedInstance] getNews:^(NSArray *news) {
         [news enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -90,17 +97,15 @@ static const CGFloat kMaxPostHeight = 200;
                         }
                     }
                 }];
-                
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
-                [self.collectionView reloadData];
-            } uids:uids onError:^(NSError *error) {
-                //
+                [self reloadData];
+            } uids:uids onError:^(NSString *errorString) {
+                [self reloadData];
             }];
         });
         
 
-    } offset:self.news.count onError:^(NSError *error) {
-        //
+    } offset:self.news.count onError:^(NSString *errorString) {
+        [self reloadData];
     }];
 }
 
@@ -109,34 +114,17 @@ static const CGFloat kMaxPostHeight = 200;
     // Dispose of any resources that can be recreated.
 }
 
-//#pragma mark - UITableViewDelegate
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return self.news.count;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 1;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    NewsTableViewCell * cell;
-//    
-//    if (cell == nil) {
-//        cell = [tableView dequeueReusableCellWithIdentifier:kNewsTableViewCellIdentifier];
-//    }
-//    
-//    Note *note = self.news[indexPath.section];
-//    [cell configureCell:note];
-//    
-//    return cell;
-//}
+- (void)showErrorWithMessage:(NSString *)message {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"VKTest" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:cancel];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 #pragma mark - UICollectionViewDelegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     Note * note = self.news[indexPath.section];
 
     if (indexPath.row == 0) {
@@ -156,6 +144,11 @@ static const CGFloat kMaxPostHeight = 200;
     }
     
     return nil;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    Note * note = self.news[indexPath.section];
+    [self performSegueWithIdentifier:kNewsToDetailSegueIdentifier sender:note];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -220,23 +213,29 @@ static const CGFloat kMaxPostHeight = 200;
 
 #pragma mark - Actions 
 
+- (void)reloadData {
+    [self.collectionView reloadData];
+    [self.collectionView.infiniteScrollingView stopAnimating];
+    [self.collectionView.pullToRefreshView stopAnimating];
+}
+
 - (void)exitButtonTapped:(id)sender {
-    
+    [[NetworkManager sharedInstance] clearToken];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)refreshTable:(UIRefreshControl *)sender {
-    self.news = [NSMutableArray array];
-    [self loadNews];
-}
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:kNewsToDetailSegueIdentifier]) {
+        DetailViewController * dtvctrl = segue.destinationViewController;
+        dtvctrl.currentNote = sender;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

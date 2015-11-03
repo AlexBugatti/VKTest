@@ -15,7 +15,9 @@
 
 + (NetworkManager*) sharedInstance;
 
-- (void)getNews:(void(^)(NSArray * news))completion offset:(NSInteger)offset onError:(void(^)(NSError *error))failure;
-- (void)getUsers:(void(^)(NSArray *user))completion uids:(NSString *)uids onError:(void(^)(NSError *error))failure;
+- (void)clearToken;
+
+- (void)getNews:(void(^)(NSArray * news))completion offset:(NSInteger)offset onError:(void(^)(NSString *errorString))failure;
+- (void)getUsers:(void(^)(NSArray *user))completion uids:(NSString *)uids onError:(void(^)(NSString *errorString))failure;
 
 @end

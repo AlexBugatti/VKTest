@@ -31,7 +31,7 @@ static NSString * kCurrentApiVersion = @"5.37";
     if (self) {
         NSDictionary * dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"AuthorizeUser"];
         if (dict) self.token = [[AccessToken alloc] initWithDictionary:dict];
-
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
         self.requestManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kVkApiURL]];
     }
     return self;
@@ -49,10 +49,23 @@ static NSString * kCurrentApiVersion = @"5.37";
     return sharedManager;
 }
 
-#pragma mark - get methods
+#pragma mark - methods
 
-- (void)getNews:(void(^)(NSArray * news))completion offset:(NSInteger)offset onError:(void(^)(NSError *error))failure {
+- (BOOL)connected {
+    return [AFNetworkReachabilityManager sharedManager].reachable;
+}
+
+- (void)clearToken {
+    self.token = nil;
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"AuthorizeUser"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - requests
+
+- (void)getNews:(void(^)(NSArray * news))completion offset:(NSInteger)offset onError:(void(^)(NSString *errorString))failure {
     
+    NSLog(@"connected %d", [self connected]);
     NSDictionary *parameters = @{@"filters":        @"post",
                                  @"count":          @"15",
                                  @"v":              kCurrentApiVersion,
@@ -68,11 +81,20 @@ static NSString * kCurrentApiVersion = @"5.37";
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        //
+        if (failure) {
+            failure(error.localizedDescription);
+        }
     }];
 }
 
-- (void)getUsers:(void(^)(NSArray *user))completion uids:(NSString *)uids onError:(void(^)(NSError *error))failure {
+- (void)getUsers:(void(^)(NSArray *user))completion uids:(NSString *)uids onError:(void(^)(NSString *errorString))failure {
+    
+//    if (![self connected]) {
+//        if (failure) {
+//            failure(@"Not Internet Connection");
+//            return;
+//        }
+//    }
     
     NSDictionary *parameters = @{@"user_ids":      uids,
                                  @"fields":         @"photo_200",
@@ -87,7 +109,9 @@ static NSString * kCurrentApiVersion = @"5.37";
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        //
+        if (failure) {
+            failure(error.localizedDescription);
+        }
     }];
 }
 

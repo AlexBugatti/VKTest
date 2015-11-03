@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F679B4809F69720842E9479C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CADC552832D4456101808F /* libPods.a */; };
+		FA2E6C5A1BE8890E0081E0B7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2E6C591BE8890E0081E0B7 /* DetailViewController.m */; };
 		FA6AD0571BE36CD500D47A2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6AD0561BE36CD500D47A2D /* main.m */; };
 		FA6AD05A1BE36CD500D47A2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6AD0591BE36CD500D47A2D /* AppDelegate.m */; };
 		FA6AD05D1BE36CD500D47A2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6AD05C1BE36CD500D47A2D /* ViewController.m */; };
@@ -15,36 +16,39 @@
 		FA6AD0631BE36CD500D47A2D /* VKTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA6AD0611BE36CD500D47A2D /* VKTest.xcdatamodeld */; };
 		FA6AD0651BE36CD500D47A2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6AD0641BE36CD500D47A2D /* Assets.xcassets */; };
 		FA6AD0681BE36CD500D47A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6AD0661BE36CD500D47A2D /* LaunchScreen.storyboard */; };
-		FA7425521BE39D8B00770E25 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425511BE39D8B00770E25 /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
-		FA74255E1BE3A81600770E25 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74255D1BE3A81600770E25 /* NetworkManager.m */; settings = {ASSET_TAGS = (); }; };
-		FA7425631BE3A82600770E25 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425601BE3A82600770E25 /* User+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		FA7425641BE3A82600770E25 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425621BE3A82600770E25 /* User.m */; settings = {ASSET_TAGS = (); }; };
-		FA7425691BE3B15800770E25 /* AuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425671BE3B15800770E25 /* AuthorizeViewController.m */; settings = {ASSET_TAGS = (); }; };
-		FA74256A1BE3B15800770E25 /* AuthorizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7425681BE3B15800770E25 /* AuthorizeViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		FA74256D1BE3CDB900770E25 /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74256C1BE3CDB900770E25 /* AccessToken.m */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F4E1BE75D41000FD137 /* NewsHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F4C1BE75D41000FD137 /* NewsHeaderCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F4F1BE75D41000FD137 /* NewsHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F1F4D1BE75D41000FD137 /* NewsHeaderCollectionReusableView.xib */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F531BE75D5C000FD137 /* NewsFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F511BE75D5C000FD137 /* NewsFooterCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F541BE75D5C000FD137 /* NewsFooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F1F521BE75D5C000FD137 /* NewsFooterCollectionReusableView.xib */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F581BE75E53000FD137 /* NewsTextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F561BE75E53000FD137 /* NewsTextCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F591BE75E53000FD137 /* NewsTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F1F571BE75E53000FD137 /* NewsTextCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F5D1BE75E68000FD137 /* NewsImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F5B1BE75E68000FD137 /* NewsImageCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F5E1BE75E68000FD137 /* NewsImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F1F5C1BE75E68000FD137 /* NewsImageCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F611BE77BF7000FD137 /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F601BE77BF7000FD137 /* Users.m */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F641BE7E5B0000FD137 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F631BE7E5B0000FD137 /* Photo.m */; settings = {ASSET_TAGS = (); }; };
-		FA7F1F671BE7EC47000FD137 /* Attachment.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F661BE7EC47000FD137 /* Attachment.m */; settings = {ASSET_TAGS = (); }; };
-		FA9603EF1BE60BAB00D06B5C /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603EE1BE60BAB00D06B5C /* NewsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		FA9603F21BE63CAD00D06B5C /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603F11BE63CAD00D06B5C /* MappingProvider.m */; settings = {ASSET_TAGS = (); }; };
-		FA9603F71BE63DA600D06B5C /* News+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603F41BE63DA600D06B5C /* News+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		FA9603F81BE63DA600D06B5C /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603F61BE63DA600D06B5C /* News.m */; settings = {ASSET_TAGS = (); }; };
-		FA9603FB1BE67EA800D06B5C /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603FA1BE67EA800D06B5C /* Note.m */; settings = {ASSET_TAGS = (); }; };
-		FA9604001BE680B700D06B5C /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603FE1BE680B700D06B5C /* NewsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		FA9604011BE680B700D06B5C /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9603FF1BE680B700D06B5C /* NewsTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		FA7425521BE39D8B00770E25 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425511BE39D8B00770E25 /* LoginViewController.m */; };
+		FA74255E1BE3A81600770E25 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74255D1BE3A81600770E25 /* NetworkManager.m */; };
+		FA7425631BE3A82600770E25 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425601BE3A82600770E25 /* User+CoreDataProperties.m */; };
+		FA7425641BE3A82600770E25 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425621BE3A82600770E25 /* User.m */; };
+		FA7425691BE3B15800770E25 /* AuthorizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7425671BE3B15800770E25 /* AuthorizeViewController.m */; };
+		FA74256A1BE3B15800770E25 /* AuthorizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7425681BE3B15800770E25 /* AuthorizeViewController.xib */; };
+		FA74256D1BE3CDB900770E25 /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = FA74256C1BE3CDB900770E25 /* AccessToken.m */; };
+		FA7F1F4E1BE75D41000FD137 /* NewsHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F4C1BE75D41000FD137 /* NewsHeaderCollectionReusableView.m */; };
+		FA7F1F4F1BE75D41000FD137 /* NewsHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F1F4D1BE75D41000FD137 /* NewsHeaderCollectionReusableView.xib */; };
+		FA7F1F531BE75D5C000FD137 /* NewsFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F511BE75D5C000FD137 /* NewsFooterCollectionReusableView.m */; };
+		FA7F1F541BE75D5C000FD137 /* NewsFooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F1F521BE75D5C000FD137 /* NewsFooterCollectionReusableView.xib */; };
+		FA7F1F581BE75E53000FD137 /* NewsTextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F561BE75E53000FD137 /* NewsTextCollectionViewCell.m */; };
+		FA7F1F591BE75E53000FD137 /* NewsTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F1F571BE75E53000FD137 /* NewsTextCollectionViewCell.xib */; };
+		FA7F1F5D1BE75E68000FD137 /* NewsImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F5B1BE75E68000FD137 /* NewsImageCollectionViewCell.m */; };
+		FA7F1F5E1BE75E68000FD137 /* NewsImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F1F5C1BE75E68000FD137 /* NewsImageCollectionViewCell.xib */; };
+		FA7F1F611BE77BF7000FD137 /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F601BE77BF7000FD137 /* Users.m */; };
+		FA7F1F641BE7E5B0000FD137 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F631BE7E5B0000FD137 /* Photo.m */; };
+		FA7F1F671BE7EC47000FD137 /* Attachment.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7F1F661BE7EC47000FD137 /* Attachment.m */; };
+		FA9603EF1BE60BAB00D06B5C /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603EE1BE60BAB00D06B5C /* NewsViewController.m */; };
+		FA9603F21BE63CAD00D06B5C /* MappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603F11BE63CAD00D06B5C /* MappingProvider.m */; };
+		FA9603F71BE63DA600D06B5C /* News+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603F41BE63DA600D06B5C /* News+CoreDataProperties.m */; };
+		FA9603F81BE63DA600D06B5C /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603F61BE63DA600D06B5C /* News.m */; };
+		FA9603FB1BE67EA800D06B5C /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603FA1BE67EA800D06B5C /* Note.m */; };
+		FA9604001BE680B700D06B5C /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9603FE1BE680B700D06B5C /* NewsTableViewCell.m */; };
+		FA9604011BE680B700D06B5C /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9603FF1BE680B700D06B5C /* NewsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		20CADC552832D4456101808F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3393AB52F3F6E200BE0B6948 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FA2E6C581BE8890E0081E0B7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		FA2E6C591BE8890E0081E0B7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		FA2E6C5C1BE88B4C0081E0B7 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		FA6AD0521BE36CD500D47A2D /* VKTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6AD0561BE36CD500D47A2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA6AD0581BE36CD500D47A2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA2E6C571BE888EC0081E0B7 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E6C581BE8890E0081E0B7 /* DetailViewController.h */,
+				FA2E6C591BE8890E0081E0B7 /* DetailViewController.m */,
+			);
+			name = DetailViewController;
+			sourceTree = "<group>";
+		};
 		FA6AD0491BE36CD500D47A2D = {
 			isa = PBXGroup;
 			children = (
@@ -159,9 +172,7 @@
 				FA6AD05B1BE36CD500D47A2D /* ViewController.h */,
 				FA6AD05C1BE36CD500D47A2D /* ViewController.m */,
 				FA6AD05E1BE36CD500D47A2D /* Main.storyboard */,
-				FA6AD0641BE36CD500D47A2D /* Assets.xcassets */,
 				FA6AD0661BE36CD500D47A2D /* LaunchScreen.storyboard */,
-				FA6AD0691BE36CD500D47A2D /* Info.plist */,
 				FA6AD0611BE36CD500D47A2D /* VKTest.xcdatamodeld */,
 				FA6AD0551BE36CD500D47A2D /* Supporting Files */,
 			);
@@ -171,7 +182,10 @@
 		FA6AD0551BE36CD500D47A2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA6AD0691BE36CD500D47A2D /* Info.plist */,
+				FA6AD0641BE36CD500D47A2D /* Assets.xcassets */,
 				FA6AD0561BE36CD500D47A2D /* main.m */,
+				FA2E6C5C1BE88B4C0081E0B7 /* Constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,6 +203,7 @@
 		FA74254D1BE39CD300770E25 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA2E6C571BE888EC0081E0B7 /* DetailViewController */,
 				FA9603EC1BE60B8600D06B5C /* NewsViewController */,
 				FA7425651BE3B08300770E25 /* AuthorizeViewController */,
 				FA74254F1BE39D1500770E25 /* LoginViewController */,
@@ -421,6 +436,7 @@
 				FA7F1F581BE75E53000FD137 /* NewsTextCollectionViewCell.m in Sources */,
 				FA7F1F641BE7E5B0000FD137 /* Photo.m in Sources */,
 				FA6AD05D1BE36CD500D47A2D /* ViewController.m in Sources */,
+				FA2E6C5A1BE8890E0081E0B7 /* DetailViewController.m in Sources */,
 				FA9603F21BE63CAD00D06B5C /* MappingProvider.m in Sources */,
 				FA9603EF1BE60BAB00D06B5C /* NewsViewController.m in Sources */,
 				FA9603F81BE63DA600D06B5C /* News.m in Sources */,
