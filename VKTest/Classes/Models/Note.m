@@ -16,7 +16,7 @@
 - (instancetype)initWithProperties:(NSDictionary *)properties {
     if (self = [super init]) {
         [EKMapper fillObject:self fromExternalRepresentation:properties
-                 withMapping:[MappingProvider newsMapping]];
+                 withMapping:[MappingProvider noteMapping]];
     }
     return self;
 }

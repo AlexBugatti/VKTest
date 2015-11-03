@@ -8,12 +8,10 @@
 
 #import "NetworkManager.h"
 #import <AFNetworking.h>
-#import "User.h"
 
 static NSString * kVkApiURL = @"https://api.vk.com/method";
 static NSString * kVkAuthorizationURL = @"https://oauth.vk.com/authorize";
 
-static NSInteger kClientID = 5127395;
 static NSString * kRedirectURI = @"https://vk.com";
 static NSString * kCurrentApiVersion = @"5.37";
 
@@ -89,15 +87,8 @@ static NSString * kCurrentApiVersion = @"5.37";
 
 - (void)getUsers:(void(^)(NSArray *user))completion uids:(NSString *)uids onError:(void(^)(NSString *errorString))failure {
     
-//    if (![self connected]) {
-//        if (failure) {
-//            failure(@"Not Internet Connection");
-//            return;
-//        }
-//    }
-    
     NSDictionary *parameters = @{@"user_ids":      uids,
-                                 @"fields":         @"photo_200",
+                                 @"fields":         @"photo_100",
                                  @"v":              kCurrentApiVersion};
     
     [self.requestManager GET:@"users.get" parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {

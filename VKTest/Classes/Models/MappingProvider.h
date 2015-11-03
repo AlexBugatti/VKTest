@@ -11,7 +11,7 @@
 
 @interface MappingProvider : NSObject
 
-+ (EKObjectMapping *)newsMapping;
++ (EKObjectMapping *)noteMapping;
 + (EKObjectMapping*)userMapping;
 + (EKObjectMapping*)photoMapping;
 

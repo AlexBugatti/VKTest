@@ -7,16 +7,16 @@
 //
 
 #import "MappingProvider.h"
-#import "News.h"
 #import "Users.h"
 #import "Photo.h"
 #import "Attachment.h"
+#import "Note.h"
 
 @implementation MappingProvider
 
-+ (EKObjectMapping*)newsMapping
++ (EKObjectMapping*)noteMapping
 {
-    return [EKObjectMapping mappingForClass:[News class] withBlock:^(EKObjectMapping *mapping) {
+    return [EKObjectMapping mappingForClass:[Note class] withBlock:^(EKObjectMapping *mapping) {
         [mapping mapPropertiesFromArray:@[@"text", @"date"]];
         [mapping mapPropertiesFromDictionary:@{@"likes": @"likes",
                                                @"from_id": @"fromID"}];
@@ -31,7 +31,7 @@
                                                @"id" : @"userID",
                                                @"first_name" : @"firstName",
                                                @"last_name": @"lastName",
-                                               @"photo_200": @"photoURL"
+                                               @"photo_100": @"photoURL"
                                                }];
     }];
 }

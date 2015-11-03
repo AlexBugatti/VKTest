@@ -18,7 +18,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFNetworking.h>
 #import "DetailViewController.h"
-#import "News.h"
 #import "Note.h"
 #import "Users.h"
 #import "Photo.h"
@@ -53,11 +52,7 @@ static NSString * kNewsToDetailSegueIdentifier = @"NewsToDetailSegue";
     [self.collectionView registerNib:[UINib nibWithNibName:kNewsTextCollectionViewIdentifier bundle:nil] forCellWithReuseIdentifier:kNewsTextCollectionViewIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:kNewsImageCollectionViewIdentifier bundle:nil] forCellWithReuseIdentifier:kNewsImageCollectionViewIdentifier];
 
-    
     self.news = [[NSMutableArray alloc] init];
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    [self.refreshControl addTarget:self action:@selector(refreshTable:) forControlEvents:UIControlEventValueChanged];
-//    [self.collectionView addSubview:self.refreshControl];
     
     __weak typeof(self) weakSelf = self;
     [self.collectionView addInfiniteScrollingWithActionHandler:^{
